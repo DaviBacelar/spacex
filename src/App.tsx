@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import HomeView from './views/Home.view'
+import LaunchesView from './views/Launches.view';
+import FavouritesView from './views/Favourites.view'
+import NotFound from './views/NotFound.view';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/launches" component={LaunchesView} />
+        <Route path="/favourites" component={FavouritesView}/>
+        <Route path="/" exact component={HomeView} />
+        <Route path="*" component={NotFound} />
+      </Switch>
+    </Router>
   );
 }
 
