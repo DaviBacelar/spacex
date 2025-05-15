@@ -1,0 +1,17 @@
+name: Create Branch from Issue
+
+on:
+  issues:
+    types: [opened, assigned]
+
+jobs:
+  create_issue_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create branch from issue
+        uses: peter-evans/create-issue-branch@v4
+        with:
+          branch-prefix: issue-
+          branch-suffix: ''
+          branch-separator: '-'
+          default-branch: main
